@@ -20,6 +20,8 @@
 # (this script requires WeeChat 0.3.0 or newer)
 #
 # History:
+# 2020-09-10, mumixam
+#     verison 0.3: now works in python3
 # 2013-10-22, yano <michael@yanovich.net>
 #     version 0.2: now works for /me
 # 2009-10-22, xt <xt@bash.no>
@@ -31,7 +33,7 @@ weechat = w
 
 SCRIPT_NAME    = "uppercase"
 SCRIPT_AUTHOR  = "xt <xt@bash.no>"
-SCRIPT_VERSION = "0.2"
+SCRIPT_VERSION = "0.3"
 SCRIPT_LICENSE = "GPL3"
 SCRIPT_DESC    = "Transform all your input to uppercase, very useful for INTERNATIONAL CAPSLOCK DAY"
 
@@ -43,7 +45,7 @@ settings = {
 
 if w.register(SCRIPT_NAME, SCRIPT_AUTHOR, SCRIPT_VERSION, SCRIPT_LICENSE,
                     SCRIPT_DESC, "", ""):
-    for option, default_value in settings.iteritems():
+    for option, default_value in settings.items():
         if w.config_get_plugin(option) == "":
             w.config_set_plugin(option, default_value)
 
@@ -52,7 +54,7 @@ if w.register(SCRIPT_NAME, SCRIPT_AUTHOR, SCRIPT_VERSION, SCRIPT_LICENSE,
         "input" : ("/input return",  "command_run_input"),
     }
     # Hook all hooks !
-    for hook, value in hook_command_run.iteritems():
+    for hook, value in hook_command_run.items():
         w.hook_command_run(value[0], value[1], "")
 
 
